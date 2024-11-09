@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'features/news/presentation/news_screen.dart';
-import 'features/tasks/presentation/screens/home_screen.dart'; // Corregido el path para home_screen
+import 'features/tasks/presentation/tasks_screen.dart'; // Aseguramos la ruta correcta para tasks_screen
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
@@ -30,7 +32,7 @@ class MyApp extends StatelessWidget {
       ),
       GoRoute(
         path: '/tasks',
-        builder: (context, state) => const HomeScreen(),  // Se mantiene HomeScreen para tareas, ajusta si es necesario.
+        builder: (context, state) => const TasksScreen(),  // Se usa TasksScreen para la lista de tareas
       ),
     ],
   );
@@ -38,7 +40,7 @@ class MyApp extends StatelessWidget {
 
 // HomeScreen con el menú principal
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +51,8 @@ class HomeScreen extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: <Widget>[
             const DrawerHeader(
-              child: Text('Menú'),
               decoration: BoxDecoration(color: Colors.blue),
+              child: Text('Menú'),
             ),
             ListTile(
               title: const Text('Noticias'),
